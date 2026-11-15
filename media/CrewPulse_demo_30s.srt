@@ -1,0 +1,28 @@
+1
+00:00:00,080 --> 00:00:01,980
+Hi, we are Team Baseline.
+
+2
+00:00:02,080 --> 00:00:05,327
+We chose astronaut health: on Mars, help is far away.
+
+3
+00:00:05,427 --> 00:00:09,627
+Meet CrewPulse: a health check that knows each astronaut's own normal.
+
+4
+00:00:09,727 --> 00:00:13,430
+A daily check-in becomes a body map in green, amber or red.
+
+5
+00:00:13,530 --> 00:00:20,227
+On real NASA Inspiration4 blood data, seventy-two percent of personal shifts passed a normal range check.
+
+6
+00:00:20,327 --> 00:00:22,862
+With signal delays, it says what to do first.
+
+7
+00:00:22,962 --> 00:00:26,424
+Next, every crew member carries their own normal to Mars.
+

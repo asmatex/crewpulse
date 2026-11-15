@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CrewPulse | Astronaut health self-check</title>
+<meta name="description" content="A health self-assessment tool for astronauts: daily check-in, clickable body map, personal-baseline alerts and guidance that adapts to communication delay. Validated idea on NASA OSDR Inspiration4 crew blood data. NASA Space Apps 2026.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Ccircle cx=%2216%22 cy=%2216%22 r=%2213%22 fill=%22%230f9d8a%22/%3E%3Cpath d=%22M5 17h6l2-5 4 10 3-7h7%22 stroke=%22white%22 stroke-width=%222.4%22 fill=%22none%22/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><svg viewBox="0 0 32 32" class="logo" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#0f9d8a"/><path d="M4 17h6l2.5-6 4 12 3-8h8.5" stroke="#fff" stroke-width="2.6" fill="none" stroke-linejoin="round" stroke-linecap="round"/></svg>
+    <div><h1>CrewPulse</h1><p>Health self-check for astronauts, far from a doctor</p></div></div>
+  <nav id="tabs"><button data-view="today" class="on">Today</button><button data-view="trends">Trends</button><button data-view="i4">Real crew data</button><button data-view="guide">Guide &amp; sources</button></nav>
+</header>
+
+<section class="missionbar">
+  <div class="envs" id="envs" aria-label="Mission environment"></div>
+  <div class="day"><label for="day">Mission day <b id="dayLbl"></b></label><input id="day" type="range" min="1" max="30" value="30"></div>
+  <div class="delay" id="delay"></div>
+</section>
+
+<main>
+  <section id="view-today" class="view on">
+    <aside class="checkin card">
+      <h2>Daily check-in</h2>
+      <p class="muted small">Enter today's readings. Values are pre-filled from a simulated 30-day mission so you can explore.</p>
+      <form id="form"></form>
+      <h2 class="mt">Mission routine</h2>
+      <ul id="tasks" class="tasks"></ul>
+      <div class="streak" id="streak"></div>
+    </aside>
+    <div class="bodyCol card">
+      <div class="headline" id="headline"></div>
+      <svg id="body" viewBox="0 0 400 560" role="img" aria-label="Clickable body map"></svg>
+      <p class="muted small center">Click a body area. Colour shows the worst indicator: green fine, amber watch, red act now.</p>
+    </div>
+    <aside class="detail card" id="detail"></aside>
+  </section>
+
+  <section id="view-trends" class="view">
+    <div class="card">
+      <div class="row"><h2>Trend over the mission</h2><select id="trendInd" aria-label="Indicator"></select></div>
+      <svg id="trend" viewBox="0 0 1100 420"></svg>
+      <p class="muted small"><span class="sw g"></span>Population healthy range &nbsp; <span class="sw b"></span>Your personal range (days 1 to 7, mean plus or minus 2 spread) &nbsp; Dots turn amber or red when a rule fires.</p>
+    </div>
+  </section>
+
+  <section id="view-i4" class="view">
+    <div class="i4grid">
+      <div class="card finding" id="i4finding"></div>
+      <div class="card">
+        <div class="row"><h2>Inspiration4 crew blood panels</h2>
+          <div class="sel"><select id="i4crew" aria-label="Crew member"></select><select id="i4an" aria-label="Analyte"></select></div></div>
+        <svg id="i4chart" viewBox="0 0 1100 380"></svg>
+        <p class="muted small">Real values from NASA OSDR (OSD-569 complete blood count, OSD-575 metabolic panel). L = days before launch, R = days after return. Grey band: lab reference range. Blue band: this crew member's own pre-flight range.</p>
+      </div>
+      <div class="card"><h2>Day after landing: personal shifts</h2><div id="i4table"></div></div>
+    </div>
+  </section>
+
+  <section id="view-guide" class="view"><div class="card guide" id="guide"></div></section>
+</main>
+
+<footer>CrewPulse is an educational prototype built for NASA Space Apps 2026 (challenge: Create Health Monitoring Software for Astronauts on Space Missions). Not a medical device and not an official NASA product. Vital-sign mission data is simulated; laboratory data is real, from NASA OSDR.
+<span class="si">SI disclosure: code written with SI assistance (Claude) and reviewed by the team. Alerts come from explicit rules, not a generative model.</span></footer>
+
+<script src="js/data.js"></script>
+<script src="js/domains.js"></script>
+<script src="js/sim.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
